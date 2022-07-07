@@ -8,7 +8,7 @@
 <link rel="icon" href="./images/icon.png">
 <link rel="stylesheet" href="main.css" type="text/css" />
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-<!--- <title></title> --->
+<!--- <title>jemdoc &ndash; add a menu</title> --->
 <title>jemdoc + new design</title>
 <!-- MathJax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
@@ -41,7 +41,7 @@ MathJax.Hub.Config({
 <div id="layout-menu-container">
 <div id="layout-menu">
 <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a></div>
-<div class="menu-item"><a href="index.html" class="current">About</a></div>
+<div class="menu-item"><a href="index.html">About</a></div>
 <div class="menu-category">My Templates</div>
 <div class="menu-item"><a href="profile.html">Profile&nbsp;Page</a></div>
 <div class="menu-item"><a href="post1.html">Blog&nbsp;Post&nbsp;Page</a></div>
@@ -54,11 +54,12 @@ MathJax.Hub.Config({
 <div class="menu-category">User's guide</div>
 <div class="menu-item"><a href="using.html">running&nbsp;jemdoc</a></div>
 <div class="menu-item"><a href="example.html">example&nbsp;page</a></div>
-<div class="menu-item"><a href="nomenu.html">example&nbsp;page&nbsp;(no&nbsp;menu)</a></div>
+<div class="menu-item"><a href="nomenu.html" class="current">example&nbsp;page&nbsp;(no&nbsp;menu)</a></div>
+<div class="menu-item"><a href="cheatsheet.html">cheat&nbsp;sheet</a></div>
 <div class="menu-item"><a href="extra.html">extra&nbsp;syntax</a></div>
 <div class="menu-category">Configuration</div>
 <div class="menu-item"><a href="htmlchanges.html">html&nbsp;changes</a></div>
-<div class="menu-item"><a href="menu.html">adding&nbsp;a&nbsp;menu</a></div>
+<div class="menu-item"><a href="menu.html" class="current">adding&nbsp;a&nbsp;menu</a></div>
 <div class="menu-item"><a href="modelines.html">modelines</a></div>
 <div class="menu-category">Goodies</div>
 <div class="menu-item"><a href="stuff.html">vim,&nbsp;make</a></div>
@@ -73,12 +74,49 @@ MathJax.Hub.Config({
 </div> <!-- <div id="layout-menu-container"> -->
 <div id="layout-content-container">
 <div id="layout-content">
-<div id="text-img-container"><div id="img-container">
-<a href="https://github.com/szl2/jemdoc-new-design"><img src="./images/banner.png" alt="profile pic" width="100%" /></a></div>
-<div id="text-container"></div></div>
-<div id="text-img-container"><div id="img-container">
-<img src="./images/info.png" alt="info pic" width="100%" /></div>
-<div id="text-container"></div></div>
+<div id="toptitle">
+<h1>jemdoc &ndash; add a menu</h1>
+</div>
+<p>jemdoc provides an easy way to add a &lsquo;menu&rsquo; like the one you see at the left of
+this page. You should create a file called <tt>MENU</tt>, for example, in the current
+directory. This website's <tt>MENU</tt> looks something like this:</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+jemdoc
+    home                [index.html]
+    download            [download.html]
+    revision history    [revision.html]
+    contact             [contact.html]
+
+user's guide
+    cheat sheet         [cheatsheet.html]
+    using               [using.html]
+
+goodies
+    add a menu          [menu.html]
+    other stuff         [stuff.html]
+</pre></div></div>
+<p>To use the menu, start the first line of <i>each</i> source file with a special
+comment like this one:</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+# jemdoc: menu{MENU}{index.html}
+</pre></div></div>
+<p>(Replace <tt>index.html</tt> with the name of the relevant html page.) This will add a
+menu from the file called <tt>MENU</tt>, and underline and darken the menu entry
+corresponding to <tt>index.html</tt>.</p>
+<h2>Relative paths</h2>
+<p>Optionally, include a <tt>prefix</tt> which instructs jemdoc where the root of the menu
+is located relative to a particular page.</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+# jemdoc: menu{MENU}{pageinsubdir.html}{prefix}
+</pre></div></div>
+<h2>A note on menu widths</h2>
+<p>jemdoc will create menu entries that do not wrap. If you have a particularly
+long title, or menu item, insert manual linebreaks using <tt>\</tt><tt>n</tt> in your
+MENU file. Multi-line menu items will (by default) have their second and
+subsequent lines slightly indented.</p>
 </div> <!-- <div id="layout-content"> -->
 <div id="footer-container">
 <div id="footer">

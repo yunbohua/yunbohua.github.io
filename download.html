@@ -8,7 +8,7 @@
 <link rel="icon" href="./images/icon.png">
 <link rel="stylesheet" href="main.css" type="text/css" />
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-<!--- <title></title> --->
+<!--- <title>jemdoc &ndash; download</title> --->
 <title>jemdoc + new design</title>
 <!-- MathJax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
@@ -41,20 +41,21 @@ MathJax.Hub.Config({
 <div id="layout-menu-container">
 <div id="layout-menu">
 <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a></div>
-<div class="menu-item"><a href="index.html" class="current">About</a></div>
+<div class="menu-item"><a href="index.html">About</a></div>
 <div class="menu-category">My Templates</div>
 <div class="menu-item"><a href="profile.html">Profile&nbsp;Page</a></div>
 <div class="menu-item"><a href="post1.html">Blog&nbsp;Post&nbsp;Page</a></div>
 <div class="menu-item"><a href="projects.html">Project&nbsp;Page</a></div>
 <div class="menu-item"><a href="group.html">Group&nbsp;Page</a></div>
 <div class="menu-category">Jemdoc</div>
-<div class="menu-item"><a href="download.html">download</a></div>
+<div class="menu-item"><a href="download.html" class="current">download</a></div>
 <div class="menu-item"><a href="revision.html">version/bug&nbsp;info</a></div>
 <div class="menu-item"><a href="contact.html">contact</a></div>
 <div class="menu-category">User's guide</div>
 <div class="menu-item"><a href="using.html">running&nbsp;jemdoc</a></div>
 <div class="menu-item"><a href="example.html">example&nbsp;page</a></div>
 <div class="menu-item"><a href="nomenu.html">example&nbsp;page&nbsp;(no&nbsp;menu)</a></div>
+<div class="menu-item"><a href="cheatsheet.html">cheat&nbsp;sheet</a></div>
 <div class="menu-item"><a href="extra.html">extra&nbsp;syntax</a></div>
 <div class="menu-category">Configuration</div>
 <div class="menu-item"><a href="htmlchanges.html">html&nbsp;changes</a></div>
@@ -73,12 +74,29 @@ MathJax.Hub.Config({
 </div> <!-- <div id="layout-menu-container"> -->
 <div id="layout-content-container">
 <div id="layout-content">
-<div id="text-img-container"><div id="img-container">
-<a href="https://github.com/szl2/jemdoc-new-design"><img src="./images/banner.png" alt="profile pic" width="100%" /></a></div>
-<div id="text-container"></div></div>
-<div id="text-img-container"><div id="img-container">
-<img src="./images/info.png" alt="info pic" width="100%" /></div>
-<div id="text-container"></div></div>
+<div id="toptitle">
+<h1>jemdoc &ndash; download</h1>
+</div>
+<p>Here is <a href="dist/jemdoc.py"
+onclick="javascript:urchinTracker('/downloads/jemdoc.py');">jemdoc.py</a>
+(<tt>v0.7.3</tt>). You can also download this <a href="dist/jemdoc.css" target=&ldquo;blank&rdquo;>example css
+file</a> to get you started. You can easily modify the css to adjust colours, fonts
+and general layout elements to your taste. </p>
+<p>You may like to <tt>sudo cp jemdoc.py /usr/bin/jemdoc</tt>
+so that you can just type
+<tt>jemdoc</tt>; alternatively, you could add a line to your <tt>~/.bashrc</tt> or
+similar like <tt>alias jemdoc='/somepath/jemdoc.py'</tt>. Remember to <tt>chmod +x</tt> your
+file to make it executable.</p>
+<p>jemdoc requires Python&nbsp;2.3 or later. If you have a working installation of
+Python, you should be ready to go. This includes all Macs, and almost any
+fairly modern unix or linux.</p>
+<p><a href="dist/" target=&ldquo;blank&rdquo;>Old versions</a> can still be found. Mahesh Shastry provides a package with
+<a href="http://www.personal.psu.edu/mcs312/miscellany.html#portablejemdoc" target=&ldquo;blank&rdquo;>jemdoc compiled for Windows</a>.</p>
+<h2>Where to next?</h2>
+<p>Read about <a href="using.html" target=&ldquo;blank&rdquo;>how to use jemdoc</a>, check out an <a href="example.html" target=&ldquo;blank&rdquo;>example
+page</a>, then refer to the <a href="cheatsheet.html" target=&ldquo;blank&rdquo;>cheat sheet</a> once you're underway.
+You could also download sample jemdoc code, like the <a href="index.jemdoc" target=&ldquo;blank&rdquo;>index page</a>
+for this website.</p>
 </div> <!-- <div id="layout-content"> -->
 <div id="footer-container">
 <div id="footer">
