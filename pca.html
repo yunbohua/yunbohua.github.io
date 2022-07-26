@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="./images/Huaness.png">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <!--- <title>Projects</title> --->
+    <title>Kevin Hua</title>
+    <!-- MathJax -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+    </script>
+    <script type="text/javascript"
+    src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+    </script>
+    <!-- End MathJax -->
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="index.html"><img src="./images/Huaness.png" alt=""
+                                style="width: 100%; height: 100%; position: center; padding:0px; margin: 0px;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="index.html">Kevin Hua</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <div id="layout-menu-container">
+                <div id="layout-menu">
+                    <div class="menu-item"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+
+                    <div class="menu-item"><a href="index.html">About&nbsp;me</a></div>
+                    <div class="menu-item"><a href="education.html">Education</a></div>
+                    <div class="menu-category">Study&nbsp;Notes</div>
+                    <div class="menu-item"><a href="pca.html", class="current">Principal&nbsp;Component&nbsp;Analysis</a></div>
+                    <div class="menu-item"><a href="post1.html">Linear&nbsp;Regression</a></div>
+                    <div class="menu-category">Links</div>
+                    <div class="menu-item"><a href="https://www.linkedin.com/in/kevin-hua-262a68197/"
+                            target="_blank">LinkedIn</a></div>
+                    <div class="menu-category">Jupyter&nbsp;Notebook</div>
+                    <div class="menu-item"><a href="https://github.com/yunbohua/Numpy"
+                            target="_blank">Numpy&nbsp;Tutorial</a></div>
+
+                </div> <!-- <div id="layout-menu"> -->
+            </div> <!-- <div id="layout-menu-container"> -->
+            <div id="layout-content-container">
+                <div id="layout-content">
+                    <div id="toptitle">
+                        <h1>Principal Component Analysis</h1>
+
+                        <h2>Introduction</h2>
+                        <p>
+                            Before transferring, I took an introductory course to linear algebra in Spring 2021 at the
+                            University of Buffalo.
+                            I enjoyed that class very much, although the class was delivered online due to the pandemic.
+                            After I transferred, with great interest in linear algebra,
+                            I took a more advanced proof-based linear algebra class in Winter 2022 that underscored
+                            linear transformation and its geometric interpretation.
+                            It was wonderful. After the class ended, I decided to learn more on my own.
+                        </p>
+
+                        <p>
+                            Principal Component Analysis (PCA) is one of the most important applications of linear algebra in
+                            Machine Learning.
+                            However, there is so much involved that it might appear discombobulating to those new to
+                            this subject.
+                        </p>
+
+                        <p>
+                            I, therefore, collect all my study notes regarding this subject
+                            and compile them into this document as a tutorial, which I hope you will find helpful!
+                        </p>
+                        <p>
+                            Note: there are various fashions to do principal component analysis. But, here, we will limit the scope and only zero in on <b>one</b> method
+                            – <b>through deriving sample covariance matrix and change of variables</b>.
+                        </p>
+                        
+                        <h2>Observation vectors and the matrix of observations</h2>
+                        <p>
+                            An observation vector is a vector that records the measurements of properties that we are interested in on our objects. More specifically, 
+                            each entry of the vector specifies a measurement of one of the corresponding properties. 
+                            For example, if we sample a group of students. And we measure each student’s weight and height. 
+                            One observation vector, $\textbf{X}$, will be created for each student to contain their weight and height, 
+                            denoted as <em>w</em> and <em>h</em>, where \[\textbf{X} = \begin{bmatrix}
+                            w \\ h
+                            \end{bmatrix} \]
+                            As its name suggests, 
+                            a matrix of observations consists of a collection of observation vectors (we assume there are n students). 
+                            It has the form
+                            \begin{bmatrix} 
+                            \textbf{X}_1&\cdot\cdot\cdot&\textbf{X}_n
+                            \end{bmatrix} where \[\textbf{X}_i = \begin{bmatrix}
+                            w_i\\
+                            h_i
+                            \end{bmatrix} \]
+
+                        </p>
+                        <h2>Sample Mean and Mean-deviation form</h2>
+
+
+                        <p>
+                            Before we delve into PCA, we have to talk about deriving the sample covariance matrix. 
+                            But before that, to derive the sample covariance matrix, 
+                            we need to derive Sample Mean, $\textbf{M}$, of the observation vectors $\textbf{X_1,...X_n}$
+                            is defined as 
+            
+                            \[\textbf{M = } \frac{1}{n}(\textbf{X}_1 + \cdot\cdot\cdot + \textbf{X}_n)\]
+                    
+                            The original observation matrix has to be transformed into mean-deviation form B before proceeding to compute the covariance matrix. 
+                            It’s known that ${B}$ has a zero sample mean. 
+                            But why is it zero? Below is the proof.
+                            
+                        </p>
+                        <p>
+                            We know that \[\hat{\textbf{X}}_k = \textbf{X}_k - \textbf{M}\] for each 1 $\leq$ k $\leq$ n. 
+                        
+                        </p>
+                        <p>
+                            Let the sample mean of the columns of ${B}$ be 
+                            \[\hat{\textbf{M}} = \frac{1}{n}(\hat{\textbf{X}}_1 + \cdot\cdot\cdot + \hat{\textbf{X}}_n)\]\[ = 
+                            \frac{1}{n}(\textbf{X}_1 - \textbf{M} + \cdot\cdot\cdot + \textbf{X}_n - \textbf{M})\]\[ = 
+                            \frac{1}{n}(\textbf{X}_1 + \cdot\cdot\cdot + \textbf{X}_n - n\textbf{M}) \]\[ 
+                            \hspace{9cm} = \frac{1}{n}(n\textbf{M} - n\textbf{M}) = 0 \hspace{8cm}\square\]             
+                        </p>
+                        
+                        
+                        <h2>
+                            A positive semidefinite covariance matrix
+                        </h2>
+                        <p>
+                            Now, we can substitute ${B}$ into the formula for the sample covariance matrix to get our result.
+                            Moving on, one might ask, “why is a matrix of the form ${B}{B}^T$ always positive semidefinite?” Below is the proof.
+                            <br>
+                            \[\vec{x}^T{B}{B}^T\vec{x} = 
+                            \vec{x}\cdot({B}{B}^T\vec{x}) = ({B}{B}^T\vec{x})\cdot\vec{x} = ({B}{B}^T\vec{x})^T\vec{x}\]
+                            \[ = \vec{x}^T{B}{B}^T\vec{x}\]
+                            \[ = ({B}^T\vec{x})\cdot({B}^T\vec{x})\]
+                            \[ \hspace{10cm} = ({B}^T\vec{x})^2 \ge 0 \hspace{9cm} \square\]
+                            Hence, ${B}{B}^T$ is positive semidefinite.
+                            Then, how about ${B}^T{B}$ ?
+                            \[\vec{x}^T{B}^T{B}\vec{x} = ({B}\vec{x})\cdot({{B}\vec{x}})\]
+                            \[\hspace{10cm} = ({B}\vec{x})^2 \ge 0  \hspace{9cm} \square\]
+                            It turns out that ${B}^T{B}$ is positive semidefinite as well!
+                            Note that if ${B}$ is n $\times$ n and invertible, ${B}^T{B}$ is positive definite. Below is the proof.
+                            <br>
+                            <br>
+                            As B is invertible,
+                            \[ker({B}) = {\vec{0}}\]
+                            Thus
+                            \[{B}\vec{x} = \vec{0}\]
+                            if and only if 
+                            \[\vec{x} = \vec{0}\]
+                            Thus, \[\forall \vec{x} \ne \vec{0}, {B}\vec{x} \ne \vec{0}\] In other words, \[\forall \vec{x} \ne \vec{0}, ({B}\vec{x})^2 > 0\]
+                            <br>
+                            Thus, ${B}^T{B}$ is positive definite. 
+
+                        </p>
+                        <h2>(Incomplete)</h2>
+                        
+                    </div> <!-- <div id="layout-content"> -->
+                    <div id="footer-container">
+                        <div id="footer">
+                            <div id="footer-text">
+                                 </br>
+                                Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">jemdoc +
+                                    new design</a>.
+                            </div> <!-- <div id="footer-text"> -->
+                        </div> <!-- <div id="footer"> -->
+                    </div> <!-- <div id="footer-container"> -->
+                </div> <!-- <div id="layout-content-container"> -->
+            </div>
+            <!--- <div id="layout"> --->
+        </div>
+        <!--- <div id="main-container"> --->
+        <script>
+            function openNav() {
+                if (window.innerWidth <= 1200) {
+                    document.getElementById("layout-menu").style.width = "280px";
+                    document.getElementById("layout-content-container").style.marginLeft = "280.8px";
+                    document.getElementById("layout-content-container").style.position = "fixed";
+                }
+            }
+            function closeNav() {
+                if (window.innerWidth <= 1200) {
+                    document.getElementById("layout-menu").style.width = "0";
+                    document.getElementById("layout-content-container").style.position = "static";
+                    document.getElementById("layout-content-container").style.marginLeft = "0px";
+                    setInterval(
+                        function () { location.reload() },
+                        500
+                    );
+                }
+            }
+        </script>
+</body>
+
+</html>

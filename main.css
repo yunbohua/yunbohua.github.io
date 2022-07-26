@@ -658,6 +658,9 @@ div#layout-menu-container .closebtn:hover {
 	}
 }
 
+li::marker {
+    font-size: 1em;
+}
 
 
 
