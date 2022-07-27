@@ -120,15 +120,18 @@
             
                             \[\textbf{M = } \frac{1}{n}(\textbf{X}_1 + \cdot\cdot\cdot + \textbf{X}_n)\]
                     
-                            The original observation matrix has to be transformed into mean-deviation form B before proceeding to compute the covariance matrix. 
+                            Before proceeding to compute the covariance matrix, the original observation matrix has to be transformed into mean-deviation form ${B}$, where
+                            \[B = \begin{bmatrix} 
+                            \hat{\textbf{X}}_1&\hat{\textbf{X}}_2&\cdot\cdot\cdot&\hat{\textbf{X}}_n
+                            \end{bmatrix}\]
+                            where \[\hat{\textbf{X}}_k = \textbf{X}_k - \textbf{M}\] for each 1 $\leq$ k $\leq$ n. 
+                            <br>
+                            <br>
                             It’s known that ${B}$ has a zero sample mean. 
                             But why is it zero? Below is the proof.
                             
                         </p>
-                        <p>
-                            We know that \[\hat{\textbf{X}}_k = \textbf{X}_k - \textbf{M}\] for each 1 $\leq$ k $\leq$ n. 
-                        
-                        </p>
+    
                         <p>
                             Let the sample mean of the columns of ${B}$ be 
                             \[\hat{\textbf{M}} = \frac{1}{n}(\hat{\textbf{X}}_1 + \cdot\cdot\cdot + \hat{\textbf{X}}_n)\]\[ = 
@@ -142,7 +145,8 @@
                             A positive semidefinite covariance matrix
                         </h2>
                         <p>
-                            Now, we can substitute ${B}$ into the formula for the sample covariance matrix to get our result.
+                            Now, we can substitute ${B}$ into the formula below to obtain our sample covariance matrix.
+                            \[S = \frac{1}{n - 1}{B}{B}^T \]
                             Moving on, one might ask, “why is a matrix of the form ${B}{B}^T$ always positive semidefinite?” Below is the proof.
                             <br>
                             \[\vec{x}^T{B}{B}^T\vec{x} = 
@@ -167,6 +171,18 @@
                             Thus, \[\forall \vec{x} \ne \vec{0}, {B}\vec{x} \ne \vec{0}\] In other words, \[\hspace{9cm}\forall \vec{x} \ne \vec{0}, ({B}\vec{x})^2 > 0 \hspace{9cm} \square\]
                             <br>
                             Thus, ${B}^T{B}$ is positive definite. 
+
+                        </p>
+                        <h2>
+                            The elements of the matrix.
+                        </h2>
+                        <p>
+                            One might also cast doubts as to why the diagonal entries of the sample covariance matrix are the <a href="https://www.google.com/search?kgmid=/m/07ycq&hl=en-US&q=Variance&kgs=625f8b5ee62d3cf8&shndl=0&source=sh/x/kp/osrp/1&entrypoint=sh/x/kp/osrp">variances</a>
+                             of corresponding variables 
+                            while non-diagonal entries are the <a href="https://www.google.com/search?kgmid=/m/014mwd&hl=en-US&q=Covariance&kgs=90a604c738b8ea05&shndl=0&source=sh/x/kp/osrp/1&entrypoint=sh/x/kp/osrp">covariances</a>
+                             of two variables. 
+                            I wish the proof below would dispel your unbelief.
+                            <br>
 
                         </p>
                         <h2>(Incomplete)</h2>
