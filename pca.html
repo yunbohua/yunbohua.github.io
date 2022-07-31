@@ -14,7 +14,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
     </script>
     <script type="text/javascript"
-    src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+    src="Documents/LaTeXMathML.js">
     </script>
     <!-- End MathJax -->
 </head>
@@ -60,6 +60,7 @@
             <div id="layout-content-container">
                 <div id="layout-content">
                     <div id="toptitle">
+                        
                         <h1>Principal Component Analysis</h1>
 
                         <h2>Introduction</h2>
@@ -94,7 +95,7 @@
                             An observation vector is a vector that records the measurements of properties that we are interested in on our objects. More specifically, 
                             each entry of the vector specifies a measurement of one of the corresponding properties. 
                             For example, if we sample a group of students. And we measure each student’s weight and height. 
-                            One observation vector, $\textbf{X}$, will be created for each student to contain their weight and height, 
+                            One observation vector, \(\textbf{X}\), will be created for each student to contain their weight and height, 
                             denoted as <em>w</em> and <em>h</em>, where \[\textbf{X} = \begin{bmatrix}
                             w \\ h
                             \end{bmatrix} \]
@@ -115,25 +116,25 @@
                         <p>
                             Before we delve into PCA, we have to talk about deriving the sample covariance matrix. 
                             But before that, to derive the sample covariance matrix, 
-                            we need to derive Sample Mean, $\textbf{M}$, of the observation vectors $\textbf{X_1,...X_n}$
+                            we need to derive the \(\textbf{sample mean, M,}\) of the observation vectors \(\textbf{X}_1,...,\textbf{X}_n\)
                             is defined as 
             
                             \[\textbf{M = } \frac{1}{n}(\textbf{X}_1 + \cdot\cdot\cdot + \textbf{X}_n)\]
                     
-                            Before proceeding to compute the covariance matrix, the original observation matrix has to be transformed into mean-deviation form ${B}$, where
+                            Before proceeding to compute the covariance matrix, the original observation matrix has to be transformed into mean-deviation form \({B}\), where
                             \[B = \begin{bmatrix} 
                             \hat{\textbf{X}}_1&\hat{\textbf{X}}_2&\cdot\cdot\cdot&\hat{\textbf{X}}_n
                             \end{bmatrix}\]
-                            where \[\hat{\textbf{X}}_k = \textbf{X}_k - \textbf{M}\] for each 1 $\leq$ k $\leq$ n. 
+                            where \[\hat{\textbf{X}}_k = \textbf{X}_k - \textbf{M}\] for each 1 \(\leq\) k \(\leq\) n. 
                             <br>
                             <br>
-                            It’s known that ${B}$ has a zero sample mean. 
+                            It’s known that \({B}\) has a zero sample mean. 
                             But why is it zero? Below is the proof.
                             
                         </p>
     
                         <p>
-                            Let the sample mean of the columns of ${B}$ be 
+                            Let the sample mean of the columns of \({B}\) be 
                             \[\hat{\textbf{M}} = \frac{1}{n}(\hat{\textbf{X}}_1 + \cdot\cdot\cdot + \hat{\textbf{X}}_n)\]\[ = 
                             \frac{1}{n}(\textbf{X}_1 - \textbf{M} + \cdot\cdot\cdot + \textbf{X}_n - \textbf{M})\]\[ = 
                             \frac{1}{n}(\textbf{X}_1 + \cdot\cdot\cdot + \textbf{X}_n - n\textbf{M}) \]\[ 
@@ -145,21 +146,21 @@
                             A positive semidefinite covariance matrix
                         </h2>
                         <p>
-                            Now, we can substitute ${B}$ into the formula below to obtain our sample covariance matrix.
+                            Now, we can substitute \({B}\) into the formula below to obtain our sample covariance matrix.
                             \[S = \frac{1}{n - 1}{B}{B}^T \]
-                            Moving on, one might ask, “why is a matrix of the form ${B}{B}^T$ always positive semidefinite?” Below is the proof.
+                            Moving on, one might ask, “why is a matrix of the form \({B}{B}^T\) always positive semidefinite?” Below is the proof.
                             <br>
                             \[\vec{x}^T{B}{B}^T\vec{x} = 
                             \vec{x}\cdot({B}{B}^T\vec{x}) = ({B}{B}^T\vec{x})\cdot\vec{x} = ({B}{B}^T\vec{x})^T\vec{x}\]
                             \[ = \vec{x}^T{B}{B}^T\vec{x}\]
                             \[ = ({B}^T\vec{x})\cdot({B}^T\vec{x})\]
                             \[ \hspace{10cm} = ({B}^T\vec{x})^2 \ge 0 \hspace{9cm} \square\]
-                            Hence, ${B}{B}^T$ is positive semidefinite.
-                            Then, how about ${B}^T{B}$ ?
+                            Hence, \({B}{B}^T\) is positive semidefinite.
+                            Then, how about \({B}^T{B}\) ?
                             \[\vec{x}^T{B}^T{B}\vec{x} = ({B}\vec{x})\cdot({{B}\vec{x}})\]
                             \[\hspace{10cm} = ({B}\vec{x})^2 \ge 0  \hspace{9cm} \square\]
-                            It turns out that ${B}^T{B}$ is positive semidefinite as well!
-                            Note that if ${B}$ is n $\times$ n and invertible, ${B}^T{B}$ is positive definite. Below is the proof.
+                            It turns out that \({B}^T{B}\) is positive semidefinite as well!
+                            Note that if \({B}\) is n \(\times\) n and invertible, \({B}^T{B}\) is positive definite. Below is the proof.
                             <br>
                             <br>
                             As B is invertible,
@@ -168,9 +169,9 @@
                             \[{B}\vec{x} = \vec{0}\]
                             if and only if 
                             \[\vec{x} = \vec{0}\]
-                            Thus, \[\forall \vec{x} \ne \vec{0}, {B}\vec{x} \ne \vec{0}\] In other words, \[\hspace{9cm}\forall \vec{x} \ne \vec{0}, ({B}\vec{x})^2 > 0 \hspace{9cm} \square\]
+                            Thus, \[\forall \vec{x} \ne \vec{0}, {B}\vec{x} \ne \vec{0}\] In other words, \[\hspace{9cm}\forall \vec{x} \ne \vec{0}, ({B}\vec{x})^2 > 0  \hspace{9cm}\square\]
                             <br>
-                            Thus, ${B}^T{B}$ is positive definite. 
+                            Thus, \({B}^T{B}\) is positive definite. 
 
                         </p>
                         <h2>
@@ -183,9 +184,44 @@
                              of two variables. 
                             I wish the proof below would dispel your unbelief.
                             <br>
-
+                            Assume a p \(\times\) n matrix \[B = \begin{bmatrix} 
+                            \hat{\textbf{X}}_1&\hat{\textbf{X}}_2&\cdot\cdot\cdot&\hat{\textbf{X}}_n
+                            \end{bmatrix}\]
+                            in mean deviation form.
+                            <br>
+                            <br>
+                            Let the sample covariance matrix be \[S = \frac{1}{n - 1} {B}{B}^T \]
+                            We denote the entry in \({i}\)th row and \({j}\)th column of \({S}\) as \({S}_{ij}\).
+                            Then, \[{S}_{ij} = \vec{e}_i^T{S}\vec{e}_j = \vec{e}_i^T(\frac{1}{n - 1}{B}{B}^T\vec{e}_j) 
+                            = \frac{1}{n - 1}\vec{e}_i^T{B}{B}^T\vec{e}_j\] 
+                            \[ = \frac{1}{n - 1}({B}^T\vec{e}_i)\cdot({B}^T\vec{e}_j)\]
+                            \[ = \frac{1}{n - 1}(\begin{bmatrix}
+                                                    -\hspace{1.7mm}{\hat{\textbf{X}}_1}^T- \\
+                                                    -\hspace{1.7mm}{\hat{\textbf{X}}_2}^T- \\
+                                                    \vdots \\ 
+                                                    -\hspace{1.7mm}{\hat{\textbf{X}}_n}^T-
+                                                    \end{bmatrix} \vec{e}_i) \cdot 
+                                                    (\begin{bmatrix}
+                                                    -\hspace{1.7mm}{\hat{\textbf{X}}_1}^T- \\
+                                                    -\hspace{1.7mm}{\hat{\textbf{X}}_2}^T- \\
+                                                    \vdots \\ 
+                                                    -\hspace{1.7mm}{\hat{\textbf{X}}_n}^T-
+                                                    \end{bmatrix} \vec{e}_j)\]
+                            Note that the \({i}\)th column of \({B}^T\) is a vector \(\vec{x}_i\) in mean deviation form, composed of all data values taken upon a sole variable \({x}_i\).
+                            <br>
+                            <br>
+                            Thus, \[{S}_{ij} = \frac{1}{n - 1}(\vec{x}_i\cdot\vec{x}_j) \\
+                                             = \frac{1}{n - 1}(\begin{bmatrix}
+                                                                {x}_{i1} \\
+                                                                \vdots \\
+                                                                {x}_{in}\end{bmatrix} \cdot
+                                                                \begin{bmatrix}
+                                                                {x}_{j1} \\
+                                                                \vdots \\
+                                                                {x}_{jn}\end{bmatrix})\]
                         </p>
                         <h2>(Incomplete)</h2>
+                        
                         
                     </div> <!-- <div id="layout-content"> -->
                     <div id="footer-container">
