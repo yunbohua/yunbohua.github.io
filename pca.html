@@ -151,7 +151,7 @@
                             \[S = \frac{1}{n - 1}{B}{B}^T \]
                             Moving on, one might ask, “why is a matrix of the form \({B}{B}^T\) always positive semidefinite?” Below is the proof.
                             <br>
-                            \beign{proof}
+                            
                             \[\vec{x}^T{B}{B}^T\vec{x} = 
                             \vec{x}\cdot({B}{B}^T\vec{x}) = ({B}{B}^T\vec{x})\cdot\vec{x} = ({B}{B}^T\vec{x})^T\vec{x}\]
                             \[ = \vec{x}^T{B}{B}^T\vec{x}\]
@@ -160,21 +160,21 @@
                             Hence, \({B}{B}^T\) is positive semidefinite.
                             Then, how about \({B}^T{B}\) ?
                             \[\vec{x}^T{B}^T{B}\vec{x} = ({B}\vec{x})\cdot({{B}\vec{x}})\]
-                            \[ = ({B}\vec{x})^2 \ge 0  \square\]
+                            \[ \hspace{10cm} = ({B}\vec{x})^2 \ge 0  \hspace{9cm}\square\]
                             It turns out that \({B}^T{B}\) is positive semidefinite as well!
-                            \end{proof}
+                            
                             Note that if \({B}\) is n \(\times\) n and invertible, \({B}^T{B}\) is positive definite. Below is the proof.
                             <br>
                             <br>
-                            \begin{proof}
+                            
                             As \({B}\) is invertible,
                             \[ker({B}) = {\vec{0}}\]
                             Thus
                             \[{B}\vec{x} = \vec{0}\]
                             if and only if 
                             \[\vec{x} = \vec{0}\]
-                            Thus, \[\forall \vec{x} \ne \vec{0}, {B}\vec{x} \ne \vec{0}\] In other words, \[\forall \vec{x} \ne \vec{0}, ({B}\vec{x})^2 > 0  \square\]
-                            \end{proof}
+                            Thus, \[\forall \vec{x} \ne \vec{0}, {B}\vec{x} \ne \vec{0}\] In other words, \[\hspace{9cm} \forall \vec{x} \ne \vec{0}, ({B}\vec{x})^2 > 0 \hspace{9cm} \square\]
+                            
                             <br>
                             Thus, \({B}^T{B}\) is positive definite. 
 
@@ -230,10 +230,12 @@
                                                                 {x}_{j1} \\
                                                                 \vdots \\
                                                                 {x}_{jn}\end{bmatrix})\]
-                            \[ = \frac{1}{n - 1}\sum^{n}_{k = 1}{x}_{ik}{x}_{jk} 
+                            \[\hspace{3cm} = \frac{1}{n - 1}\sum^{n}_{k = 1}{x}_{ik}{x}_{jk} 
                             = \frac{1}{n - 1}\sum^{n}_{k = 1}({y}_{ik} - \bar{y}_i)({y}_{jk} - \bar{y}_j) 
                             = \begin{cases} \mbox{Cov}_{y_i,y_j}, &\mbox{    if } i \neq j \\
-                             \\ \mbox{Var}_{y_i},  &\mbox{   if } i \neq j \end{cases}  \]
+                             \\ \mbox{Var}_{y_i},  &\mbox{   if } i \neq j \end{cases} \hspace{3cm}\square \]
+                            
+                            Note that ${y}_{ik} - \bar{y}_i = {x}_{ik}$, ${y}_{ik}$ is the $\textbf{original}$ data value while $\bar{y}_i$ is the $\textbf{mean}$ of ${y}_i$.
                              
                         </p>
                         <h2>(Incomplete)</h2>
