@@ -220,7 +220,7 @@
                                                     \vdots \\ 
                                                     -\hspace{1.7mm}{\hat{\textbf{X}}_n}^T-
                                                     \end{bmatrix} \vec{e}_j)\]
-                            Note that the \({i}\)th column of \({B}^T\) is a vector \(\vec{x}_i\) in mean deviation form, composed of all data values taken upon a sole variable \({x}_i\).
+                            The \({i}\)th column of \({B}^T\) is a vector \(\vec{x}_i\) in mean deviation form, composed of all data values taken upon a sole variable \({x}_i\).
                             <br>
                             <br>
                             Thus, \[{S}_{ij} = \frac{1}{n - 1}(\vec{x}_i\cdot\vec{x}_j) \\
@@ -237,10 +237,61 @@
                             = \begin{cases} \mbox{Cov}_{y_i,y_j}, &\mbox{    if } i \neq j \\
                              \\ \mbox{Var}_{y_i},  &\mbox{   if } i \neq j \end{cases} \hspace{3cm}\square \]
                             
-                            Note that ${y}_{ik}$ - $\bar{y}_i$ = ${x}_{ik}$ where ${y}_{ik}$ is the $\textbf{original}$ data value while $\bar{y}_i$ is the $\textbf{mean}$ of ${y}_i$.
-                             
+                            Please note that \({y}_{ik} - \bar{y}_i = {x}_{ik}\) where \({y}_{ik}\) is the \(\textbf{original}\) data value while \(\bar{y}_i\) is the \(\textbf{mean}\) of \({y}_i\). 
+                            <br>
+                            <br>
+                            Please also note that the proof above also incidentally explains why we have to convert the observation matrix into <b>mean-deviation form</b> -- we need it for substituting into the formula. 
+                            <br>
+                            <br>
+                            Now, we are ready to delve into the main point – <b>principal component analysis (PCA)</b>.
+
                         </p>
-                        <h2>(Incomplete)</h2>
+                        <h2>My understanding of PCA</h2>
+                        <p>
+                            Essentially, the gist of PCA is <b>eliminating redundant data</b> by collecting 
+                            sequence data points <b>along new axes</b> (new variables) with the biggest variance but no covariance. 
+                            As, in fact, <b>the bigger the variance, the more information it encapsulates</b> 
+                            (the bigger the variance, the wider the range of change this variable bears, and the more information it can carry). On the other hand,
+                             as covariances represent the correlation between variables, they could be considered <b>repetitive</b> information in this case. 
+                             (Consider the case where two variables are closely related. We only need one of the two as with one, 
+                             and we could predict the other with the one we have). 
+                             Therefore, our goal is to assume the largest variance while eliminating all covariances (variables are uncorrelated to one another).
+                        </p>
+                        <p>
+                            For example, let’s take a look at three shots of the same object, Railroad Valley, Nevada, where each of the three is captured with a different Landsat wavelength band. 
+                        </p>
+                        
+                        <img src="./images/PCA_Lay's1.png" width="850px">
+
+                        <p>
+                            As we can easily discern, some features of the valley appear in all three images, which are gratuitous. We can lessen the repetitions by boiling them down into a composite image with the aid of PCA.
+                        </p>
+                        <p>
+                            At first, the three spectral components compose a series of observation vectors in  , where each entry of a vector records a pixel on one of the images.
+                        </p>
+                        <p>   
+                            The goal of PCA now is to find three linear combinations of three spectral components. We can view those spectral components as different variables in the current coordinate system. 
+                            And we want to do a <b>change of variables</b> to get to <b>another coordinate system</b> in which one of the new variables (linear combinations of the three spectral components) has the biggest variance. 
+                            In this fashion, this new variable would embody <b>most of the characteristics</b> in all three images.
+                        </p>
+                        <img src="./images/PCA_Lay's2.png" width="850px">
+                        <p>
+                            The original sample covariance matrix S represents the variances and covariances of data from (a) – (c).
+                        </p>
+                        <p>
+                            Then, we would want a new covariance matrix (after the change of variable), maximizing the variances and minimizing covariances. 
+                            As the sample covariance matrix is symmetric, it’s orthogonally diagonalizable. 
+                            However, one might ask, why will this diagonal matrix do the trick? 
+                            First, we are looking for a new coordinate system where variances are maximized, and covariances are minimized. 
+                            With this in mind, it’s verifiable that this diagonal matrix would present the biggest variances in order, while it’s unquestionable that covariances are zero in this diagonal matrix. 
+                            The justification can be found <a href = https://en.wikipedia.org/wiki/Principal_component_analysis#Details target = "_blank">here</a>.
+                            
+                        </p>
+                        <p>
+                            In this fashion, the three-channel initial data can be reduced to one-channel data (d) (if we only want one channel, first principal component analysis), with a loss of a mere 6.5% of the scene variance. Basically, we only take the vectors along this sole axis.
+                        </p>
+                        <img src="./images/PCA_Lay's2.png" width="850px">
+
                         
                         
                     </div> <!-- <div id="layout-content"> -->
