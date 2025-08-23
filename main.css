@@ -10,6 +10,9 @@ body {
 }
 
 
+
+
+
 div#main-container {
 	min-height: 100vh;
 	background: white;
@@ -711,6 +714,7 @@ div#member p{
   vertical-align: middle;
   width: 100%;
 }
+
 
 @media screen and (max-width: 800px) {
   .column {
